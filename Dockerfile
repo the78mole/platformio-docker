@@ -1,6 +1,7 @@
 FROM ubuntu:noble
 
-LABEL org.opencontainers.image.source="https://github.com/the78mole/platformio-docker"
+# Label will be set during build via --label flag
+# LABEL org.opencontainers.image.source will be added during CI build
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Systempakete installieren - nur die essentiellen für PlatformIO

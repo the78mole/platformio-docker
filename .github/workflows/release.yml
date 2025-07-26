@@ -1,4 +1,4 @@
-name: Release PlatformIO Docker Image to GHCR
+name: Release Docker Image to GHCR
 
 on:
   push:
@@ -44,9 +44,14 @@ jobs:
         with:
           context: .
           push: true
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.url=https://github.com/${{ github.repository }}
+            org.opencontainers.image.title=${{ github.event.repository.name }}
+            org.opencontainers.image.description=${{ github.event.repository.description }}
           tags: |
-            ghcr.io/the78mole/platformio-docker:latest
-            ghcr.io/the78mole/platformio-docker:${{ steps.semver.outputs.version_tag }}
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:${{ steps.semver.outputs.version_tag }}
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
