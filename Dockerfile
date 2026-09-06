@@ -26,9 +26,9 @@ RUN if ! getent group 1000; then \
 
 # PlatformIO installieren
 RUN pip3 install --break-system-packages \
-    platformio==6.1.18 \
-    pre-commit==4.2.0 \
-    esptool==5.0.1
+    platformio==6.2.0 \
+    pre-commit==4.6.2 \
+    esptool==5.4.0
 
 # PlatformIO Udev-Regeln installieren (für USB-Geräte)
 RUN curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules \
